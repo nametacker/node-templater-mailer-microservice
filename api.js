@@ -82,6 +82,7 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
     {
       dsn: ['required', 'regex:^[a-z]+://[^:]+:[^@]+@[^:]+:\\d+$'],
       email: 'required|email',
+      bcc: 'email',
       name: 'required'
     }));
   app.put('/templates/:id', createResource.bind(createResource, TemplateRepository,
@@ -174,12 +175,15 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
                   .send();
                 // Send mail
                 Promise.promisifyAll(transporter);
-                return transporter.sendMailAsync({
+                var mailConfig = {
                   to: '"' + req.body.name + '" <' + req.body.to + '>',
-                  bcc: transport.email,
                   subject: subject,
                   html: html
-                });
+                };
+                if (transport.bcc) {
+                  mailConfig.bcc = transport.bcc;
+                }
+                return transporter.sendMailAsync(mailConfig);
               })
               .then(function () {
                 logging.info(
