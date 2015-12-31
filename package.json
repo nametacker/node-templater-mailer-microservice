@@ -1,6 +1,6 @@
 {
   "name": "node-templater-mailer-microservice",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A microservice for sending template based emails via an SMTP server written in JavaScript",
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js -c ./.eslintrc ./"
