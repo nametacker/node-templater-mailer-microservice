@@ -35,7 +35,7 @@ var app = express();
 require('./api')(app, config, logging, SmtpCredentialRepository, TemplateRepository);
 
 // Expose app
-app.listen(config.get('port'));
+app.listen(config.get('port'), config.get('host'));
 logging.info(config.get('app') + ' v' + config.get('version') + ' (Node ' + process.version + ') started');
 logging.info('--port ' + config.get('port'));
 logging.info('--host ' + config.get('host'));
