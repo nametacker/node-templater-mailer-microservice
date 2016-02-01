@@ -12,7 +12,7 @@ var logging = bunyan.createLogger({name: config.get('app')});
 var redis = require('redis');
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
-var redisClient = redis.createClient(config.get('redis'));
+var redisClient = redis.createClient({host: config.get('redis_host'), port: config.get('redis_port')});
 redisClient.on('error', function (err) {
   logging.error(err);
 });
@@ -39,7 +39,7 @@ app.listen(config.get('port'), config.get('host'));
 logging.info(config.get('app') + ' v' + config.get('version') + ' (Node ' + process.version + ') started');
 logging.info('--port ' + config.get('port'));
 logging.info('--host ' + config.get('host'));
-logging.info('--redis.port ' + config.get('redis').port);
-logging.info('--redis.host ' + config.get('redis').host);
+logging.info('--redis_port ' + config.get('redis_port'));
+logging.info('--redis_host ' + config.get('redis_host'));
 
 module.exports = app;

@@ -1,5 +1,11 @@
 'use strict';
 
+// Case insensitive env variables
+// See https://github.com/indexzero/nconf/pull/177
+Object.keys(process.env).forEach(function (key) {
+  process.env[key.toLowerCase()] = process.env[key];
+});
+
 var nconf = require('nconf');
 
 nconf

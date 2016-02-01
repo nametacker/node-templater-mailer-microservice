@@ -3,7 +3,8 @@
   "version": "0.0.6",
   "description": "A microservice for sending template based emails via an SMTP server written in JavaScript",
   "scripts": {
-    "lint": "./node_modules/eslint/bin/eslint.js -c ./.eslintrc ./"
+    "lint": "./node_modules/eslint/bin/eslint.js -c ./.eslintrc ./",
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
