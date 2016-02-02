@@ -33,7 +33,7 @@
     "bunyan": "^1.5.1",
     "express": "^4.13.4",
     "indicative": "^2.0.5",
-    "lodash": "^4.1.0",
+    "lodash": "^4.2.0",
     "nconf": "^0.8.2",
     "node-uuid": "^1.4.7",
     "nodemailer": "^2.0.0",
