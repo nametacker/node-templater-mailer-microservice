@@ -8,9 +8,9 @@
       "resolved": "https://registry.npmjs.org/accepts/-/accepts-1.2.13.tgz"
     },
     "addressparser": {
-      "version": "0.3.2",
-      "from": "addressparser@>=0.3.2 <0.4.0",
-      "resolved": "https://registry.npmjs.org/addressparser/-/addressparser-0.3.2.tgz"
+      "version": "1.0.0",
+      "from": "addressparser@1.0.0",
+      "resolved": "https://registry.npmjs.org/addressparser/-/addressparser-1.0.0.tgz"
     },
     "align-text": {
       "version": "0.1.3",
@@ -117,9 +117,9 @@
       "resolved": "https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.2.tgz"
     },
     "buildmail": {
-      "version": "3.0.1",
-      "from": "buildmail@3.0.1",
-      "resolved": "https://registry.npmjs.org/buildmail/-/buildmail-3.0.1.tgz"
+      "version": "3.3.2",
+      "from": "buildmail@3.3.2",
+      "resolved": "https://registry.npmjs.org/buildmail/-/buildmail-3.3.2.tgz"
     },
     "bunyan": {
       "version": "1.5.1",
@@ -639,9 +639,9 @@
       "resolved": "https://registry.npmjs.org/libqp/-/libqp-1.1.0.tgz"
     },
     "lodash": {
-      "version": "4.1.0",
-      "from": "lodash@4.1.0",
-      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.1.0.tgz"
+      "version": "4.2.1",
+      "from": "lodash@4.2.1",
+      "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.2.1.tgz"
     },
     "lodash._arraycopy": {
       "version": "3.0.0",
@@ -824,9 +824,9 @@
       "resolved": "https://registry.npmjs.org/longest/-/longest-1.0.1.tgz"
     },
     "mailcomposer": {
-      "version": "3.0.1",
-      "from": "mailcomposer@3.0.1",
-      "resolved": "https://registry.npmjs.org/mailcomposer/-/mailcomposer-3.0.1.tgz"
+      "version": "3.3.2",
+      "from": "mailcomposer@3.3.2",
+      "resolved": "https://registry.npmjs.org/mailcomposer/-/mailcomposer-3.3.2.tgz"
     },
     "media-typer": {
       "version": "0.3.0",
@@ -911,14 +911,14 @@
       "resolved": "https://registry.npmjs.org/nan/-/nan-2.1.0.tgz"
     },
     "nconf": {
-      "version": "0.8.2",
-      "from": "nconf@latest",
-      "resolved": "https://registry.npmjs.org/nconf/-/nconf-0.8.2.tgz",
+      "version": "0.8.4",
+      "from": "nconf@0.8.4",
+      "resolved": "https://registry.npmjs.org/nconf/-/nconf-0.8.4.tgz",
       "dependencies": {
         "camelcase": {
-          "version": "2.0.1",
+          "version": "2.1.0",
           "from": "camelcase@>=2.0.1 <3.0.0",
-          "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-2.0.1.tgz"
+          "resolved": "https://registry.npmjs.org/camelcase/-/camelcase-2.1.0.tgz"
         },
         "cliui": {
           "version": "3.1.0",
@@ -931,9 +931,9 @@
           "resolved": "https://registry.npmjs.org/window-size/-/window-size-0.1.4.tgz"
         },
         "yargs": {
-          "version": "3.31.0",
+          "version": "3.32.0",
           "from": "yargs@>=3.19.0 <4.0.0",
-          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.31.0.tgz"
+          "resolved": "https://registry.npmjs.org/yargs/-/yargs-3.32.0.tgz"
         }
       }
     },
@@ -953,34 +953,34 @@
       "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.7.tgz"
     },
     "nodemailer": {
-      "version": "2.0.0",
-      "from": "nodemailer@2.0.0",
-      "resolved": "https://registry.npmjs.org/nodemailer/-/nodemailer-2.0.0.tgz"
+      "version": "2.1.0",
+      "from": "nodemailer@2.1.0",
+      "resolved": "https://registry.npmjs.org/nodemailer/-/nodemailer-2.1.0.tgz"
     },
     "nodemailer-direct-transport": {
-      "version": "2.0.0",
-      "from": "nodemailer-direct-transport@2.0.0",
-      "resolved": "https://registry.npmjs.org/nodemailer-direct-transport/-/nodemailer-direct-transport-2.0.0.tgz"
+      "version": "2.0.1",
+      "from": "nodemailer-direct-transport@2.0.1",
+      "resolved": "https://registry.npmjs.org/nodemailer-direct-transport/-/nodemailer-direct-transport-2.0.1.tgz"
     },
     "nodemailer-fetch": {
-      "version": "1.0.0",
-      "from": "nodemailer-fetch@1.0.0",
-      "resolved": "https://registry.npmjs.org/nodemailer-fetch/-/nodemailer-fetch-1.0.0.tgz"
+      "version": "1.2.1",
+      "from": "nodemailer-fetch@1.2.1",
+      "resolved": "https://registry.npmjs.org/nodemailer-fetch/-/nodemailer-fetch-1.2.1.tgz"
     },
     "nodemailer-shared": {
-      "version": "1.0.2",
-      "from": "nodemailer-shared@1.0.2",
-      "resolved": "https://registry.npmjs.org/nodemailer-shared/-/nodemailer-shared-1.0.2.tgz"
+      "version": "1.0.3",
+      "from": "nodemailer-shared@1.0.3",
+      "resolved": "https://registry.npmjs.org/nodemailer-shared/-/nodemailer-shared-1.0.3.tgz"
     },
     "nodemailer-smtp-pool": {
-      "version": "2.0.0",
-      "from": "nodemailer-smtp-pool@2.0.0",
-      "resolved": "https://registry.npmjs.org/nodemailer-smtp-pool/-/nodemailer-smtp-pool-2.0.0.tgz"
+      "version": "2.1.0",
+      "from": "nodemailer-smtp-pool@2.1.0",
+      "resolved": "https://registry.npmjs.org/nodemailer-smtp-pool/-/nodemailer-smtp-pool-2.1.0.tgz"
     },
     "nodemailer-smtp-transport": {
-      "version": "2.0.0",
-      "from": "nodemailer-smtp-transport@2.0.0",
-      "resolved": "https://registry.npmjs.org/nodemailer-smtp-transport/-/nodemailer-smtp-transport-2.0.0.tgz"
+      "version": "2.0.1",
+      "from": "nodemailer-smtp-transport@2.0.1",
+      "resolved": "https://registry.npmjs.org/nodemailer-smtp-transport/-/nodemailer-smtp-transport-2.0.1.tgz"
     },
     "nodemailer-wellknown": {
       "version": "0.1.7",
@@ -1174,6 +1174,11 @@
       "from": "safe-json-stringify@>=1.0.0 <2.0.0",
       "resolved": "https://registry.npmjs.org/safe-json-stringify/-/safe-json-stringify-1.0.3.tgz"
     },
+    "secure-keys": {
+      "version": "1.0.0",
+      "from": "secure-keys@>=1.0.0 <2.0.0",
+      "resolved": "https://registry.npmjs.org/secure-keys/-/secure-keys-1.0.0.tgz"
+    },
     "send": {
       "version": "0.13.1",
       "from": "send@0.13.1",
@@ -1190,9 +1195,9 @@
       "resolved": "https://registry.npmjs.org/shelljs/-/shelljs-0.5.3.tgz"
     },
     "smtp-connection": {
-      "version": "2.0.0",
-      "from": "smtp-connection@2.0.0",
-      "resolved": "https://registry.npmjs.org/smtp-connection/-/smtp-connection-2.0.0.tgz"
+      "version": "2.0.1",
+      "from": "smtp-connection@2.0.1",
+      "resolved": "https://registry.npmjs.org/smtp-connection/-/smtp-connection-2.0.1.tgz"
     },
     "source-map": {
       "version": "0.4.4",
