@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "bluebird": "^3.2.2",
-    "body-parser": "^1.14.2",
+    "body-parser": "^1.15.0",
     "bunyan": "^1.5.1",
     "express": "^4.13.4",
     "indicative": "^2.0.5",
