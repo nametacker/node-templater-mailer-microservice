@@ -1,14 +1,14 @@
 {
   "name": "node-templater-mailer-microservice",
-  "version": "0.0.8",
   "description": "A microservice for sending template based emails via an SMTP server written in JavaScript",
   "scripts": {
-    "lint": "./node_modules/eslint/bin/eslint.js -c ./.eslintrc ./",
-    "start": "node main.js"
+    "lint": "./node_modules/.bin/standard",
+    "start": "node main.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/nametacker/node-templater-mailer-microservice.git"
+    "url": "https://github.com/nametacker/node-templater-mailer-microservice.git"
   },
   "keywords": [
     "email",
@@ -25,7 +25,8 @@
   },
   "homepage": "https://github.com/nametacker/node-templater-mailer-microservice#readme",
   "devDependencies": {
-    "eslint": "^1.10.3"
+    "standard": "^6.0.5",
+    "semantic-release": "^4.3.5"
   },
   "dependencies": {
     "bluebird": "^3.2.2",

@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
-var bodyParser = require('body-parser'),
-  indicative = require('indicative'),
-  Promise = require('bluebird'),
-  _ = require('lodash'),
-  nodemailer = require('nodemailer');
-var API_VERSION = 1;
+var bodyParser = require('body-parser')
+var indicative = require('indicative')
+var Promise = require('bluebird')
+var _ = require('lodash')
+var nodemailer = require('nodemailer')
+var API_VERSION = 1
 
 /**
  * @param app
@@ -15,18 +15,18 @@ var API_VERSION = 1;
  * @param {Repository} TemplateRepository
  */
 module.exports = function (app, config, logging, SmtpCredentialRepository, TemplateRepository) {
-  app.enable('trust proxy');
+  app.enable('trust proxy')
   app.use(function (req, res, next) {
-    res.header('Cache-Control', 'max-age=0, private');
-    next();
-  });
+    res.header('Cache-Control', 'max-age=0, private')
+    next()
+  })
 
-  var CONTENT_TYPE = 'application/vnd.' + config.get('app') + '.v' + API_VERSION + '+json';
-  app.use(bodyParser.json({type: CONTENT_TYPE}));
+  var CONTENT_TYPE = 'application/vnd.' + config.get('app') + '.v' + API_VERSION + '+json'
+  app.use(bodyParser.json({type: CONTENT_TYPE}))
 
-  function errorResponse(res, err, status) {
-    logging.info(err.message, {error: err});
-    status = status || 500;
+  function errorResponse (res, err, status) {
+    logging.info(err.message, {error: err})
+    status = status || 500
     res.status(status)
       .set('Content-Type', CONTENT_TYPE)
       .send({
@@ -35,7 +35,7 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
         title: err.name,
         status: status,
         detail: err.message
-      });
+      })
     /**
      * See https://datatracker.ietf.org/doc/draft-ietf-appsawg-http-problem/
      * @param {String} type     A URI reference [RFC3986] that identifies the problem type.
@@ -51,14 +51,14 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
      */
   }
 
-  function createValidationErrorResponse(res, errors) {
+  function createValidationErrorResponse (res, errors) {
     return errorResponse(res, new Error(_.reduce(errors, function (msg, err) {
-      msg.push(err.message);
-      return msg;
-    }, []).join(', ')), 400);
+      msg.push(err.message)
+      return msg
+    }, []).join(', ')), 400)
   }
 
-  function createResource(repo, bodySchema, req, res) {
+  function createResource (repo, bodySchema, req, res) {
     return Promise.join(
       indicative.validate(req.params, {id: 'alpha_numeric'}),
       indicative.validate(req.body, bodySchema)
@@ -69,13 +69,13 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
             return res.status(201)
               .set('Content-Type', CONTENT_TYPE)
               .set('Location', req.url)
-              .send();
+              .send()
           })
           .catch(function (err) {
-            return errorResponse(res, err);
-          });
+            return errorResponse(res, err)
+          })
       })
-      .catch(createValidationErrorResponse.bind(null, res));
+      .catch(createValidationErrorResponse.bind(null, res))
   }
 
   app.put('/smtp_credentials/:id', createResource.bind(createResource, SmtpCredentialRepository,
@@ -84,23 +84,23 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
       email: 'required|email',
       bcc: 'email',
       name: 'required'
-    }));
+    }))
   app.put('/templates/:id', createResource.bind(createResource, TemplateRepository,
     {
       subject: 'required',
       html: 'required'
-    }));
+    }))
 
-  function listResources(repo, transformer, req, res) {
+  function listResources (repo, transformer, req, res) {
     return repo.list()
       .then(function (items) {
         return res.status(200)
           .set('Content-Type', CONTENT_TYPE)
-          .send(_.map(items, transformer.bind(transformer, req)));
+          .send(_.map(items, transformer.bind(transformer, req)))
       })
       .catch(function (err) {
-        return errorResponse(res, err);
-      });
+        return errorResponse(res, err)
+      })
   }
 
   app.get('/smtp_credentials', listResources.bind(listResources, SmtpCredentialRepository, function (req, item) {
@@ -110,16 +110,16 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
       dsn: item[1].dsn,
       email: item[1].email,
       name: item[1].name
-    };
-  }));
+    }
+  }))
   app.get('/templates', listResources.bind(listResources, TemplateRepository, function (req, item) {
     return {
       $context: 'https://jsonld.nametacker.com/Template',
       $id: req.url + '/' + item[0],
       subject: item[1].subject,
       html: item[1].html
-    };
-  }));
+    }
+  }))
 
   // Mail sending
   app.post('/send/:transport/:template', function (req, res) {
@@ -139,20 +139,20 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
             if (!transport || !template) {
               return res.status(404)
                 .set('Content-Type', CONTENT_TYPE)
-                .send();
+                .send()
             }
             // Try to apply template
-            var subject;
-            var html;
+            var subject
+            var html
             return Promise.try(function () {
-              subject = _.template(template.subject)(req.body);
-              html = _.template(template.html)(req.body);
+              subject = _.template(template.subject)(req.body)
+              html = _.template(template.html)(req.body)
             }).then(function () {
               return Promise.try(function () {
-                logging.info('Sending mail to "' + req.body.to + '" template: "' + req.params.template + '" via "' + req.params.transport + '"', req.body);
-                var headers = {};
-                headers['X-' + config.get('app')] = 'v' + config.get('version');
-                var dsn = transport.dsn.match(/^([a-z]+):\/\/([^:]+):([^@]+)@([^:]+):(\d+)$/);
+                logging.info('Sending mail to "' + req.body.to + '" template: "' + req.params.template + '" via "' + req.params.transport + '"', req.body)
+                var headers = {}
+                headers['X-' + config.get('app')] = 'v' + config.get('version')
+                var dsn = transport.dsn.match(/^([a-z]+):\/\/([^:]+):([^@]+)@([^:]+):(\d+)$/)
                 var nodemailerConfig = {
                   host: dsn[4],
                   auth: {
@@ -161,52 +161,52 @@ module.exports = function (app, config, logging, SmtpCredentialRepository, Templ
                   },
                   port: dsn[5],
                   secure: dsn[1] === 'ssl'
-                };
+                }
                 var transporter = nodemailer.createTransport(
                   nodemailerConfig,
                   {
                     from: '"' + transport.name + '" <' + transport.email + '>',
                     headers: headers
                   }
-                );
+                )
                 // Send response
                 res.status(202)
                   .set('Content-Type', CONTENT_TYPE)
-                  .send();
+                  .send()
                 // Send mail
-                Promise.promisifyAll(transporter);
+                Promise.promisifyAll(transporter)
                 var mailConfig = {
                   to: '"' + req.body.name + '" <' + req.body.to + '>',
                   subject: subject,
                   html: html
-                };
-                if (transport.bcc) {
-                  mailConfig.bcc = transport.bcc;
                 }
-                return transporter.sendMailAsync(mailConfig);
+                if (transport.bcc) {
+                  mailConfig.bcc = transport.bcc
+                }
+                return transporter.sendMailAsync(mailConfig)
               })
               .then(function () {
                 logging.info(
-                  'Successfully send mail to "' + req.body.to
-                  + '" template: "' + req.params.template + '" via "' + req.params.transport + '"',
+                  'Successfully send mail to "' + req.body.to +
+                  '" template: "' + req.params.template + '" via "' + req.params.transport + '"',
                   {body: req.body}
-                );
+                )
               })
               .catch(function (err) {
-                logging.error('Failed to send mail to "' + req.body.to + '" template: "' + req.params.template
-                  + '" via "' + req.params.transport + '"',
+                logging.error('Failed to send mail to "' + req.body.to + '" template: "' + req.params.template +
+                  '" via "' + req.params.transport + '"',
                   {
                     body: req.body,
                     error: err
                   }
-                );
-              });
-            });
+                )
+              })
+            })
           })
           .catch(function (err) {
-            return errorResponse(res, err, 400);
-          });
+            return errorResponse(res, err, 400)
+          })
       })
-      .catch(createValidationErrorResponse.bind(null, res));
-  });
-};
+      .catch(createValidationErrorResponse.bind(null, res))
+  })
+}
