@@ -18,7 +18,7 @@
     "node.js",
     "redis"
   ],
-  "author": "Markus Tacker <m@cto.hiv>",
+  "author": "Markus Tacker <m@coderbyheart.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nametacker/node-templater-mailer-microservice/issues"
