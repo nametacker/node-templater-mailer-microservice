@@ -33,7 +33,7 @@
     "body-parser": "^1.15.0",
     "bunyan": "^1.6.0",
     "express": "^4.13.4",
-    "indicative": "^2.0.5",
+    "indicative": "^3.0.0",
     "lodash": "^4.3.0",
     "nconf": "^0.8.4",
     "node-uuid": "^1.4.7",
