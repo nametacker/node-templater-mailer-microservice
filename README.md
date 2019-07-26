@@ -1,5 +1,7 @@
 # node-templater-mailer-microservice
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nametacker/node-templater-mailer-microservice.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/nametacker/node-templater-mailer-microservice.svg?branch=master)](https://travis-ci.org/nametacker/node-templater-mailer-microservice)
 
 A microservice for sending template based emails via an SMTP server written in JavaScript
